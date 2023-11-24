@@ -1,0 +1,86 @@
+{
+  "name": "angular-jest-lodash-es",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "angular-jest-lodash-es",
+  "sourceRoot": "apps/angular-jest-lodash-es/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/angular-jest-lodash-es",
+        "index": "apps/angular-jest-lodash-es/src/index.html",
+        "browser": "apps/angular-jest-lodash-es/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/angular-jest-lodash-es/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/angular-jest-lodash-es/src/favicon.ico",
+          "apps/angular-jest-lodash-es/src/assets"
+        ],
+        "styles": ["apps/angular-jest-lodash-es/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "angular-jest-lodash-es:build:production"
+        },
+        "development": {
+          "buildTarget": "angular-jest-lodash-es:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "angular-jest-lodash-es:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/angular-jest-lodash-es/**/*.ts",
+          "apps/angular-jest-lodash-es/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/angular-jest-lodash-es/jest.config.ts"
+      }
+    }
+  }
+}
