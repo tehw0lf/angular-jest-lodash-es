@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import cloneDeep from 'lodash-es/cloneDeep';
+
 import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
@@ -11,4 +13,9 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 })
 export class AppComponent {
   title = 'angular-jest-lodash-es';
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  cloneMe(value: any): any {
+    return cloneDeep(value);
+  }
 }
