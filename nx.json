@@ -60,5 +60,11 @@
     "@nx/angular:component": {
       "style": "scss"
     }
-  }
+  },
+  "analytics": false,
+  "migrate": {
+    "agentic": true
+  },
+  "neverConnectToCloud": true,
+  "useInferencePlugins": false
 }
