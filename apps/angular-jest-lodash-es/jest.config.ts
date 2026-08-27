@@ -13,11 +13,10 @@ module.exports = {
       },
     ],
   },
-  transformIgnorePatterns: [
-    'node_modules/(?!.*\\.mjs$)',
-    'node_modules/lodash-es/*',
-  ],
-  moduleNameMapper: { '^lodash-es$': 'lodash', '^lodash-es/(.*)': 'lodash/$1' },
+  // lodash-es ships ESM only, so it must be transformed rather than ignored.
+  // It is NOT mapped to `lodash`: that package is not a dependency here, so the
+  // mapping resolved to @types/lodash and Jest tried to execute a .d.ts.
+  transformIgnorePatterns: ['node_modules/(?!(?:.*\\.mjs$|lodash-es/))'],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
