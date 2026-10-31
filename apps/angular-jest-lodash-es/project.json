@@ -57,6 +57,9 @@
         "development": {
           "buildTarget": "angular-jest-lodash-es:build:development"
         }
+      },
+      "readyWhen": {
+        "signal": true
       }
     },
     "extract-i18n": {
